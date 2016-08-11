@@ -22,15 +22,20 @@ class Location():
                   "east": self.east,
                   "west": self.west}
         
-        print(direcs[direc])
-        return direcs[direc]
+        if direcs[direc] in self.available():
+            print(direcs[direc])
+            return direcs[direc]
+        else:
+            print("There is an invisible wall blocking your way, damn devs.")
+            return self
 
     def search(self):
         if self.items == []:
             print("\n    You found nothing.")
         else:
             for i in self.items:
-                print('    ' + i)
+                print('\nYou have found a ' + i.name)
+            return self.items[0]
 
         
     def available(self):

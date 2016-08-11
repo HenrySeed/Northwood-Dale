@@ -14,6 +14,16 @@ class Player():
     def injure(self, amount):
         self.health -= amount
 
+    def backpack(self):
+        print('+------Backpack------+')
+        for i in self.inventory:
+            if i.type == "Weapon":
+                print('{0:10}| {1}'.format(i.name, i.attack))
+            elif i.type == "Armour":
+                print('{0:10}| {1}'.format(i.name, i.defence))
+            elif i.type == "Items":
+                print('{0:10}'.format(i.name))
+
     def update(self):
         for item in inventory:
             if item.type == 'defence':
@@ -21,15 +31,15 @@ class Player():
 
 
 
-class item():
-    def __init__(self, name, descr, type=""):
-        self.defence = 0
-        self.attack = 0
+class Item():
+    def __init__(self, name, descr, type="", attack=0, defence=0):
+        self.defence = attack
+        self.attack = defence
 
         self.min_str = 0
         self.min_dex = 0
 
-        self.type = "item"  # Item Weapon Armour
+        self.type = "Item"  # Item Weapon Armour
 
         self.name = name
         self.descr = descr
