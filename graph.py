@@ -1,5 +1,5 @@
 class Location():
-    def __init__(self, title, descr=""):
+    def __init__(self, title, descr, items=""):
         self.north = 0
         self.south = 0
         self.east = 0
@@ -9,6 +9,7 @@ class Location():
         self.descr = descr
         
         self.first = True
+        self.items = []
         
     def move(self, direc):
         
@@ -21,7 +22,16 @@ class Location():
                   "east": self.east,
                   "west": self.west}
         
+        print(direcs[direc])
         return direcs[direc]
+
+    def search(self):
+        if self.items == []:
+            print("\n    You found nothing.")
+        else:
+            for i in self.items:
+                print('    ' + i)
+
         
     def available(self):
         result = []
@@ -43,6 +53,7 @@ class Location():
         if self.first == True:
             self.first = False
             return '\n---- {} ----\n'.format(self.title) + '\n' + self.descr
+
         else:
-            return '\n---- {} ----'.format(self.title)
+            return '\n---- {} ----\n'.format(self.title)
         
