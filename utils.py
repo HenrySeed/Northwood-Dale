@@ -5,6 +5,10 @@ def clear():
     os.system('clear')
 
 
+def printr(to_be_printed, tab_depth=1):
+    '''(str to_be_printed, int tab_depth 1 = 4 spaces)'''
+    print('    ' * tab_depth + str(to_be_printed))
+
 def menu():
 
     quit = False

@@ -1,3 +1,5 @@
+from utils import *
+
 class Player():
     def __init__(self, name):
         self.name = ""
@@ -15,14 +17,21 @@ class Player():
         self.health -= amount
 
     def backpack(self):
-        print('+------Backpack------+')
+        print()
+        printr('+-----Backpack----+--------+')
         for i in self.inventory:
             if i.type == "Weapon":
-                print('{0:10}| {1}'.format(i.name, i.attack))
-            elif i.type == "Armour":
-                print('{0:10}| {1}'.format(i.name, i.defence))
-            elif i.type == "Items":
-                print('{0:10}'.format(i.name))
+                printr("| {0:15} | {1:2} atk |".format(i.name, i.attack))
+        printr('+-----------------+--------+')
+        for i in self.inventory:
+            if i.type == "Armour":
+                printr("| {0:15} | {1:2} def |".format(i.name, i.defence))
+        printr('+-----------------+--------+')
+        for i in self.inventory:
+            if i.type == "Item":
+                printr("| {0:24} |".format(i.name))
+
+        printr('+--------------------------+')
 
     def update(self):
         for item in inventory:
@@ -32,14 +41,14 @@ class Player():
 
 
 class Item():
-    def __init__(self, name, descr, type="", attack=0, defence=0):
+    def __init__(self, name, descr, type="Item", attack=0, defence=0):
         self.defence = attack
         self.attack = defence
 
         self.min_str = 0
         self.min_dex = 0
 
-        self.type = "Item"  # Item Weapon Armour
+        self.type = type  # Item Weapon Armour
 
         self.name = name
         self.descr = descr

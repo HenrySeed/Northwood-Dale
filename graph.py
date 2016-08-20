@@ -26,6 +26,7 @@ class Location():
             print(direcs[direc])
             return direcs[direc]
         else:
+            print(self)
             print("There is an invisible wall blocking your way, damn devs.")
             return self
 
