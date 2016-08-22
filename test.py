@@ -1,4 +1,5 @@
 import re
+import os
 
 def mymatch(string, pattern):
     pattern = re.compile(pattern)
@@ -21,4 +22,12 @@ def main():
             quit = True
 
 
-main()
+list = os.popen('ls').read()
+
+items = []
+
+for i in list.split('\n'):
+    if i != '':
+        items.append(i)
+
+print(items)

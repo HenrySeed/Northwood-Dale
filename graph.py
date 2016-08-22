@@ -1,12 +1,12 @@
 class Location():
-    def __init__(self, title, descr, items=""):
+    def __init__(self, deets, items=""):
         self.north = 0
         self.south = 0
         self.east = 0
         self.west = 0
         
-        self.title = title
-        self.descr = descr
+        self.title = deets[0]
+        self.descr = deets[1]
         
         self.first = True
         self.items = []
