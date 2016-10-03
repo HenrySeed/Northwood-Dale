@@ -1,50 +1,26 @@
 import os
-from player import *
-from graph import *
+from northwood_vale.player import *
+from northwood_vale.graph import *
 import pickle
+import datetime
+
+def pwd():
+    direc = os.path.dirname(os.path.realpath(__file__))
+    direc.replace(' ', '\ ')
+    print(direc)
+    return direc
 
 def clear():
     os.system('clear')
 
 
 def printr(to_be_printed, tab_depth=1):
-    '''(str to_be_printed, int tab_depth 1 = 4 spaces)'''
+    '''(str to_be_printed, int tab_depth of 1 = 4 spaces)'''
     print('    ' * tab_depth + str(to_be_printed))
 
 
-def save_game(save_name, player):
-
-    list = os.popen('ls saves').read()
-    items = []
-    for i in list.split('\n'):
-        if i != '':
-            items.append(i)
-
-    if save_name in items:
-        os.system('rm -r saves/' + save_name)
-    
-    os.system('mkdir saves/' + save_name)
-    os.system('touch saves/' + save_name + '/' + save_name + '.txt')
-
-    # try:
-    filehandler = open('saves/' + save_name + '/' + save_name + '.txt', "wb")
-    pickle.dump(player, filehandler)
-    filehandler.close()
-    print('Game saved')
-    return 0
-    # except:
-    #     print('Could not save the game')
-    #     return -1
-    
-
-
-def load_game(filename):
-
-    return 0
-
-
 def locations_importer():
-    file = open("locations.txt", 'r')
+    file = open(pwd() + "/locations.txt", 'r')
     lines = file.readlines()
     locations = []
     location = ["", ""]

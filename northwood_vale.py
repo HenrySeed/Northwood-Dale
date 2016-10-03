@@ -1,11 +1,13 @@
-from graph import *
-from player import *
-from utils import *
-from menu import *
+from northwood_vale.graph import *
+from northwood_vale.player import *
+from northwood_vale.utils import *
+from northwood_vale.save_load import *
+from northwood_vale.menu import *
 from time import *
 import re
 
 def main():
+    print(os.path.dirname(os.path.realpath(__file__)))
     current_location = locations_importer()
     clear()
     quit = False
@@ -58,10 +60,8 @@ def main():
                 if i.name.lower() in prompt.lower():
                     print(i.descr)
 
-        elif 'save' in prompt:
-            print('Save Name')
-            save_name = input("    > ")
-            save_game(save_name, player)
+        elif 'save' in prompt or prompt == 'sa':
+            save_game(player)
 
         elif prompt in ['quit', 'q']:
             print("Quitting Now...")
@@ -69,11 +69,6 @@ def main():
             sleep(0.2)
             clear()
 
-        
-    
 
-    
-    
-main()
 
 

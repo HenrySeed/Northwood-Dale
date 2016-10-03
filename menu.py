@@ -1,5 +1,5 @@
-from utils import *
-from player import *
+from northwood_vale.utils import *
+from northwood_vale.player import *
 
 def menu():
     '''returns player class after either loading it or making a new one'''
@@ -22,7 +22,7 @@ def menu():
             return new()
 
         elif prompt.lower() in ["load", 'l', 'load game']:
-            loaded = Load()
+            loaded = load()
             if loaded == None:
                 quit = True
 
@@ -73,7 +73,7 @@ def load():
         print("Save not found, type 'back' to return to main menu'")
         prompt = input('*-|===> ')
 
-    if prompt in commande:
+    if prompt in commands:
         return None
 
     print("yup")
