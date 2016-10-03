@@ -1,4 +1,4 @@
-from northwood_vale.utils import *
+from northwood_dale.utils import *
 
 class Player():
     def __init__(self, name):

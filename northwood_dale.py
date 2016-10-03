@@ -1,8 +1,8 @@
-from northwood_vale.graph import *
-from northwood_vale.player import *
-from northwood_vale.utils import *
-from northwood_vale.save_load import *
-from northwood_vale.menu import *
+from northwood_dale.graph import *
+from northwood_dale.player import *
+from northwood_dale.utils import *
+from northwood_dale.save_load import *
+from northwood_dale.menu import *
 from time import *
 import re
 

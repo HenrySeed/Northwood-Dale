@@ -1,5 +1,5 @@
-from northwood_vale.utils import *
-from northwood_vale.player import *
+from northwood_dale.utils import *
+from northwood_dale.player import *
 
 def menu():
     '''returns player class after either loading it or making a new one'''

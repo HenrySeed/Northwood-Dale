@@ -1,6 +1,6 @@
 import os
-from northwood_vale.player import *
-from northwood_vale.graph import *
+from northwood_dale.player import *
+from northwood_dale.graph import *
 import pickle
 import datetime
 
