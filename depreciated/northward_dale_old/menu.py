@@ -1,5 +1,5 @@
-from utilities import *
-from player import *
+from northwood_dale.utils import *
+from northwood_dale.player import *
 
 def menu():
     '''returns player class after either loading it or making a new one'''
@@ -13,7 +13,7 @@ def menu():
         print("              (Q)uit Game")
         print("\n" * 8)
 
-        prompt = input("    *-|===> ")
+        prompt = input("*-|===> ")
 
         if prompt.lower() in ['q', 'quit', 'quit game']:
             quit = True
@@ -26,7 +26,7 @@ def menu():
             if loaded == None:
                 quit = True
 
-    return None
+    return -1
 
 
 def new():
@@ -37,7 +37,9 @@ def new():
 
     clear()
     player = Player(name)
-
+    # remove before release, only for testing #
+    tester(player)
+    ###########################################
     return player
 
 
@@ -77,3 +79,12 @@ def load():
     print("yup")
 
 
+##################################################################################################################
+
+def tester(player):
+    bastard_sword = Weapon("Bastard Sword", "Its a kinda longish sword", 10)
+    shield = Armour("Shield", "it blocks shit", 5)
+    bannana = Item("Bananna", "Good source of potassium")
+    player.inventory = [bastard_sword, shield, bannana]
+
+    player.update()
