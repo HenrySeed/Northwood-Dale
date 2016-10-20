@@ -423,12 +423,12 @@ def random_weapon():
                 'of Love', 'made for Cooking',]      
 
     name = weapons[randint(0,len(weapons)-1)]
-    if randint(0,10) > 5:
+    if randint(0,10) > 8:
         multi = multis[randint(0,len(multis)-1)]
     else:
         multi = None
 
-    if randint(0,200) > 100:
+    if randint(0,200) > 190:
         special = str(specials[randint(0,len(specials)-1)])
     else:
         special = None

@@ -1,5 +1,12 @@
 #!/usr/local/bin/python3
 
+import sys
+
+if sys.version_info < (3,0):
+    print("Northward Dale requires Python3.0 onwards. Download it here: https://www.python.org/downloads/")
+    sys.exit(1)
+    
+
 from player import *
 from enemies import *
 from encounters import *
