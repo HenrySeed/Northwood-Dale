@@ -61,7 +61,19 @@ class Player():
         if num_weapons > 0:
             for i in self.inventory:
                 if i.type == 'weapon':
-                    self.log.append('|  {0:9}  {1:{width}}  DMG: {2:<2} |'.format(i.icon, i.__str__(), i.dmg, width=max_width))
+                        
+                    icon = i.icon + ((9 - len(i.icon)) * ' ')
+                    name = i.__str__() + ((max_width - i.name_len) * ' ')
+                    dmg = str(i.dmg) + ((2 - len(str(i.dmg))) * ' ')
+                    line = '|  ' + icon +  '  ' + name + '  DMG: ' + dmg + ' |'
+
+                    if i.special != None or i.multi != None:
+                        spacer = (77 - len(line)) * ' '
+                    else:
+                        spacer = ''
+
+                    self.log.append(line + spacer)
+
             self.log.append(bar)
 
         if num_armour > 0:
@@ -120,8 +132,12 @@ class Player():
         
         max_width = 0
         for i in self.inventory:
-            if len(i.__str__()) > max_width:
-                max_width = len(i.__str__())
+            if i.type == 'weapon':
+                if i.name_len > max_width:
+                    max_width = i.name_len
+            else:
+                if len(i.__str__()) > max_width:
+                    max_width = len(i.__str__())
                 
         return max_width
     
@@ -264,9 +280,24 @@ class Weapon(object):
         self.multi = multi
         self.special = special
         self.type = 'weapon'
+
+        self.name_len = self.name_length()
         
         self.dmg = self.get_dmg()
         self.icon = self.get_icon(name.lower())
+
+
+    def name_length(self):
+        if self.multi == None:
+            if self.special == None:
+                return len(self.name)
+            else:
+                return len(self.name + ' ' + self.special)
+        else:
+            if self.special == None:
+                return len(self.multi + ' ' + self.name)
+            else:
+                return len(self.multi + ' ' + self.name + ' ' + self.special)
     
     
     def get_icon(self, string):
