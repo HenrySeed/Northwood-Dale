@@ -321,7 +321,7 @@ class Weapon(object):
                 'Butchers knife': '-|_____/',
                 'staff': '-----==--',
                 'cowbell': 'A\'',
-                'shovel': '|-----|_)',
+                'shovel': '|-----|)',
                 'axe': '-----7'
         }
 
@@ -409,7 +409,7 @@ class Weapon(object):
         
 def random_weapon():
     weapons = ['Dagger', 'Bastard Sword', 'Long Sword', 'Staff', 'Rapier', \
-                'Axe', 'Cowbell', 'Fish on a Stick', 'Hammer', 'Bow']
+                'Axe', 'Cowbell', 'Fish on a Stick', 'Hammer', 'Bow', 'Shovel']
 
     multis = ['Flaming', 'Frozen', 'Nasty', 'Nice', 'Sharp', 'Cracked', \
                 'Shady', 'Rapid', 'Living', 'Blunt', 'Slow', 'Bramley\'s',\
