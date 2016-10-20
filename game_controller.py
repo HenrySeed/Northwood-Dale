@@ -69,14 +69,15 @@ def game_brain(player, my_map):
             player.log.append('')
             clear()
             gui(player, my_map, display_log(player.log))
-    
-    
+            sleep(1)
+            return -1
 
         prompt = input('\n   > ')
 
 
         if prompt == 'q' or prompt == 'quit':
             quit = True
+            return -1
             clear()
 
         elif 'info' in prompt or 'tell me about' in prompt:

@@ -1,5 +1,7 @@
 from utilities import *
 from player import *
+from northwood_dale import precontroller
+
 
 def menu():
     '''returns player class after either loading it or making a new one'''
@@ -8,18 +10,18 @@ def menu():
     while quit == False:
         clear()
         print("\n" * 8)
-        print("              (P)lay Game")
-        print("              (L)oad Game")
-        print("              (Q)uit Game")
+        print("                   (P)lay Game")
+        print("                   (L)oad Game")
+        print("                   (Q)uit Game")
         print("\n" * 8)
 
-        prompt = input("    *-|===> ")
+        prompt = input("                   *-|===> ")
 
         if prompt.lower() in ['q', 'quit', 'quit game']:
             quit = True
 
         elif prompt.lower() in ["play", "p", "play game"]:
-            return new()
+            precontroller(new())
 
         elif prompt.lower() in ["load", 'l', 'load game']:
             loaded = load()
