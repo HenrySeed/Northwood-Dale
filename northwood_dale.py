@@ -25,25 +25,22 @@ player = Player('Hrothgar')
 # player = menu()
 
 if player != None:
+
+    ##     test code for character gen
   
     for i in range(1,10):
-        weapon = random_weapon()
-        (player.inventory).append(weapon)
-
+        player.inventory.append(random_weapon())
     for i in range(0, 3):
-        armour = random_armour() 
-        (player.inventory).append(armour)
+        player.inventory.append(random_armour() )
+    player.inventory.append(random_item())
+    player.inventory.append(random_item())
+    player.gp += 10000
 
-    test_item = random_item()
-    (player.inventory).append(test_item)
+     ##   / test code for character gen
 
     my_map = Map(player)
 
-    player.gp += 10000
-
     player.current_map.print_loc(player)
-
-    # pprint.pprint(player.log)
 
     game_controller.game_brain(player, my_map)
     clear()
@@ -51,13 +48,3 @@ if player != None:
 else:
     clear()
 
-
-
-
-#player.print_char_info()
-#player.help()
-#player.print_inventory()
-
-#encounter(player)
-
-# --------- add death messages

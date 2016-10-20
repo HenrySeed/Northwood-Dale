@@ -97,7 +97,6 @@ class Player():
         
     def print_char_info(self):
         '''print's a table of info about your character'''
-        
         self.log.append('+' + (12 * '-') + '+' + (10 * '-') + '+')
         self.log.append('|' + ' Name       | {0:<9}|'.format(self.name))
         self.log.append('+' + (12 * '-') + '+' + (10 * '-') + '+')
@@ -115,7 +114,6 @@ class Player():
         
     def help(self):
         '''Prints a table of useful commands'''
-
         self.log.append('+' + ('-' * 20) + '+')
         self.log.append('| Available commands |')
         self.log.append('+' + ('-' * 20) + '+')
@@ -124,12 +122,12 @@ class Player():
         self.log.append('| {0:<18} |'.format('(Q)uests'))
         self.log.append('| {0:<18} |'.format('(C)haracter'))
         self.log.append('| {0:<18} |'.format('(H)elp'))
+        self.log.append('| {0:<18} |'.format('(H)elp'))
         self.log.append('+' + ('-' * 20) + '+')  
         self.log.append('') 
         
     def inv_max_width(self):
         '''finds the maximum width of the items column of the inventory'''
-        
         max_width = 0
         for i in self.inventory:
             if i.type == 'weapon':

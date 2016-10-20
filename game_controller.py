@@ -29,8 +29,6 @@ def gui(player, my_map, log):
     print('  +{0:70}+{1:27}+'.format(('-') * 70, '---------------------------'))
     print()
 
-    
-
 
 def game_brain(player, my_map):
     commands = {'north':        player.north,
