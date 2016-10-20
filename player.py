@@ -47,9 +47,14 @@ class Player():
 
                 if i.type == 'food':
                     self.log.append('You eat the ' + i.name.lower() + '. It restores some health')
+                    self.heal(5)
                     self.log.append('')
                     self.inventory.remove(i)
                     return 0
+
+
+    def heal(self, amount):
+        self.health = (amount + self.health) % self.max_health
 
     
     def print_inventory(self):
