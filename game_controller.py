@@ -32,14 +32,7 @@ def gui(player, my_map, log):
 
 
 def game_brain(player, my_map):
-    commands = {'north':        player.north,
-                'n':            player.north,
-                'south':        player.south,
-                's':            player.south,
-                'east':         player.east,
-                'e':            player.east,
-                'west':         player.west,
-                'w':            player.west,
+    commands = {
                 'info':         player.print_char_info,
                 'i':            player.print_inventory,
                 'inv':          player.print_inventory,
@@ -54,7 +47,7 @@ def game_brain(player, my_map):
 
     quit = False
 
-    player.print_inventory()
+    # player.print_inventory()
 
     while quit == False:
 
@@ -62,14 +55,11 @@ def game_brain(player, my_map):
         gui(player, my_map, display_log(player.log))
 
         if player.health == 0:
-            sleep(1)
-            player.log.append('')
-            player.log.append("        You died")
-            player.log.append('')
-            player.log.append('')
-            clear()
+            died(player)
             gui(player, my_map, display_log(player.log))
             sleep(1)
+            clear()
+
             return -1
 
         prompt = input('\n   > ')
@@ -79,6 +69,9 @@ def game_brain(player, my_map):
             quit = True
             return -1
             clear()
+
+        elif prompt in ['north', 'n', 'south', 's', 'east', 'e', 'west', 'w']:
+            player.current_map.move(prompt, player)
 
         elif 'info' in prompt or 'tell me about' in prompt:
             item_info(player, prompt)

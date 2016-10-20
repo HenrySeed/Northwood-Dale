@@ -1,17 +1,29 @@
 ##Homestead
-Nestled near the river this large farmhouse looms over the flat plains as the only point on the horizon for miles. 
-
+Nestled near the river this large farmhouse looms over the flat 
+plains as the only point on the horizon for miles. 
+  
     To the North you can spot a lookout tower in the mountains
     To the West the road dips down to the river
     To the East the houses stables sit near a field for horses
-    To the South the road leads into the horizon, Its too hazy to see
+    To the South the road leads into the horizon.
 
 ##Lookout Tower
-Resting on the side of these mountain range is this lookout tower. It looks like it has the best view in the plains. You can see as far as the desert to the south of the homestead and you can see the giant tree on Kuldahar to the east. Far in the west the river snakes lazily across the plains. This high up you feel as though you can almost touch the heavens. You should probably head down before you fall. It's pretty precarious up here.
+Resting on the side of these mountain range is this lookout 
+tower. It looks like it has the best view in the plains. You 
+can see as far as the desert to the south of the homestead and 
+you can see the giant tree on Kuldahar to the east. Far in the 
+west the river snakes lazily across the plains. This high up you 
+feel as though you can almost touch the heavens. You should 
+probably head down before you fall. It's pretty precarious up 
+here.
+  
     To the South lies the path back to the Homestead
     On all other sides the mountain is too tough to climb.
 
 ##Homestead Stables
-The stables sit near the homestead but there are no horses nearby, wonder where they all went? eh, nevermind, the owner probabley sold them. Nothing nefarious going on here.
-    To the east sits Kuldahar, resting in the shade under the mile tall tree.
+The stables sit near the homestead but there are no horses 
+nearby, wonder where they all went? eh, nevermind, the owner 
+probabley sold them. Nothing nefarious going on here.
+  
+    To the east sits Kuldahar, sitting under the mile high tree.
     Back towards the West sits the Homestead.

@@ -13,7 +13,7 @@ class Location():
         self.first = True
         self.items = []
         
-    def move(self, direc):
+    def move(self, direc, player):
         
         direcs = {"n": self.north,
                   "s": self.south,
@@ -25,19 +25,24 @@ class Location():
                   "west": self.west}
         
         if direcs[direc] in self.available():
-            print(direcs[direc])
-            return direcs[direc]
+            player.current_map = direcs[direc]
+            player.log.append("You walk along the path until you reach...")
+            player.log.append('')
+            player.current_map.print_loc(player)
+
         else:
             print(self)
             print("There is an invisible wall blocking your way, damn devs.")
             return self
 
-    def search(self):
+
+    def search(self, player):
         if self.items == []:
-            print("\n    You found nothing.")
+            player.log.append("    You found nothing.")
+            player.log.append('')
         else:
             for i in self.items:
-                print('\nYou have found a ' + i.name)
+                player.log.append('You have found a ' + i.name)
             return self.items[0]
 
         
@@ -61,12 +66,14 @@ class Location():
         if self.first == True:
             self.first = False
             player.log.append('---- {} ----'.format(self.title))
+            player.log.append('')
             
             for i in self.descr.split('\n'):
                 string_to_log(i, player.log)
 
         else:
-            return '\n---- {} ----\n'.format(self.title)
+            player.log.append('---- {} ----'.format(self.title))
+            player.log.append('')
         
 
 def locations_importer():

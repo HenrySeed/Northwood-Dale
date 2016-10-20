@@ -2,6 +2,7 @@ import sys
 import os
 from random import randint
 from locations import *
+from time import sleep
 
 def problem():
     stmnts = ['I dont understand that', 'what?', 'sorry can you rephrase that?']
@@ -27,9 +28,15 @@ def string_to_log(string, log):
     else:
         log.append(string)
         
+def died(player):
+    sleep(1)
+    player.log.append('')
+    player.log.append("        You died")
+    player.log.append('')
+    player.log.append('')
+    clear()
 
 def pwd():
     direc = os.path.dirname(os.path.realpath(__file__))
     direc.replace(' ', '\ ')
-    print(direc)
     return direc

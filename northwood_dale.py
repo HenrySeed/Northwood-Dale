@@ -11,7 +11,6 @@ if sys.version_info < (3,0):
     print("           Download it here: https://www.python.org/downloads/")
     print('\n' * 5)
 
-
     sys.exit(1)
     
 
@@ -19,7 +18,6 @@ from player import *
 from map import *
 from load import *
 import game_controller
-from menu import *
 from random import randint
 from utilities import *
 
@@ -54,11 +52,7 @@ def test_player(player):
         player.inventory.append(random_item())
         player.inventory.append(random_food())
         player.gp += 10000
-
-        ##   / test code for character gen
-
-
-precontroller(Player('Hrothgar'))
+        
 
 def menu():
     '''returns player class after either loading it or making a new one'''
@@ -123,6 +117,7 @@ def print_log():
 
 
 def load():
+
     names = print_log()
     prompt = input('*-|===> ')
     commands = ['back', 'q', 'quit', 'close', 'cancel']
@@ -139,3 +134,5 @@ def load():
 
 
 # menu()
+
+status = precontroller(Player('Hrothgar'))

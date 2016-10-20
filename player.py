@@ -200,6 +200,8 @@ class Player():
 
     def north(self):
         self.position[1] = self.position[1] - 1
+        self.current_map.move('n')
+        self.current_map.print_loc(self)
         
     def south(self):
         self.position[1] = self.position[1] + 1  
