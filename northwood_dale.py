@@ -34,6 +34,7 @@ if player != None:
         player.inventory.append(random_armour() )
     player.inventory.append(random_item())
     player.inventory.append(random_item())
+    player.inventory.append(random_food())
     player.gp += 10000
 
      ##   / test code for character gen

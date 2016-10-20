@@ -34,6 +34,23 @@ class Player():
         self.chr = 10
         self.dex = 10
 
+
+
+    def eat(self, name):
+        for i in self.inventory:
+            if name.lower() == i.name.lower():
+                if i.type == 'weapon' or i.type == 'armour' or i.type == 'item':
+                    self.log.append('You shove the ' + i.name.lower() + ' down your throat and choke to death')
+                    self.log.append('')
+                    self.health = 0
+                    return 0
+
+                if i.type == 'food':
+                    self.log.append('You eat the ' + i.name.lower() + '. It restores some health')
+                    self.log.append('')
+                    self.inventory.remove(i)
+                    return 0
+
     
     def print_inventory(self):
         '''Prints self.inventory in dynamic table'''
@@ -84,7 +101,7 @@ class Player():
         
         if num_items > 0:
             for i in self.inventory:
-                if i.type == 'item':
+                if i.type == 'item' or i.type == 'food' :
                     self.log.append('|  {0:{width}} |'.format(i.name, width=max_width + 20))
             self.log.append(bar)
 
@@ -200,7 +217,6 @@ class Player():
 
 ###########################   Weapons, Armour and Items  ############################
 
-    
 class Item(object):
     def __init__(self, name, descr=None):
         self.name = name
@@ -210,8 +226,6 @@ class Item(object):
 
     def get_descr(self):
         descrs = {
-                'bananna':'A good source of potassium.',
-                'apple':'One a day keeps doctor Nick away.',
                 'stick':'Not really a weapon but certainly usefull.'
         }
         if self.name.lower() in descrs.keys():
@@ -227,6 +241,34 @@ class Item(object):
 
     def __str__(self):
         return self.name
+    
+
+class Food(object):
+    def __init__(self, name, descr=None):
+        self.name = name
+        self.descr = descr
+
+        self.type = 'food'
+
+    def get_descr(self):
+        descrs = {
+                'bananna':'A good source of potassium.',
+                'apple':'One a day keeps doctor Nick away.'
+        }
+        if self.name.lower() in descrs.keys():
+            desc = descrs[self.name.lower()]
+        else:
+            desc = ''
+
+        return desc
+
+    def descr_printr(self):
+        name = self.name
+        return name, self.get_descr()
+
+    def __str__(self):
+        return self.name
+
 
 class Armour(object):
     def __init__(self, name, special=None):
@@ -453,10 +495,14 @@ def random_armour():
 
 
 def random_item():
-    items = ['Bananna', 'Apple', 'Stick']
+    items = ['Stick']
     name = items[randint(0,len(items)-1)]
-    new_item = Item(name)
-    return new_item
+    return Item(name)
+
+def random_food():
+    foods = ['Bananna', 'Apple']
+    name = foods[randint(0,len(foods)-1)]
+    return Food(name)
 
 
 def item_info(player, prompt):

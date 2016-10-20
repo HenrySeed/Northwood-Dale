@@ -28,7 +28,10 @@ def add_to_log(log, prompt):
                   "quests": "Opened Quests",
                   "q": "Opened Quests",
                   }
-    ignore = ['e', 'east','w', 'west','n', 'north','s', 'south', '\\x1b[A', '\\x1b[C', '\\x1b[D', '\\x1b[B', 'i', 'inv', 'inventory', 'c', 'char', 'character', '?', 'help', 'h']
+    ignore = ['e', 'east','w', 'west','n', 'north','s', \
+    'south', '\\x1b[A', '\\x1b[C', '\\x1b[D', '\\x1b[B', \
+    'i', 'inv', 'inventory', 'c', 'char', 'character', \
+    '?', 'help', 'h']
 
     if prompt.lower() in dictionary.keys():
         log += [dictionary[prompt.lower()]]
