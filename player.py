@@ -26,7 +26,7 @@ class Player():
         self.inventory = []
         self.gp = 0
 
-        self.inv_size = 10
+        self.inv_size = 20
 
         self.log = ['']
 
@@ -146,19 +146,25 @@ class Player():
         health = self.health
         max_health = self.max_health
         health_ratio = health/max_health
+        health_fill = red(int(health_ratio * 14) * '#')
+        health_spacer = (14 - int(health_ratio * 14)) * ' '
         
         exp = self.exp
         nec_level = self.next_level
         exp_ratio = exp/nec_level
+        exp_fill = green(int(exp_ratio * 14) * '#')
+        exp_spacer = (14 - int(exp_ratio * 14)) * ' '
         
         pane_lines = []
         
         pane_lines.append('')
-        pane_lines.append('  Health [{0:14}]'.format(int(health_ratio * 14) * '#'))
+        pane_lines.append('  Health [' + health_fill + health_spacer + ']  ')
         pane_lines.append('             {0} / {1}'.format(health, max_health))
+
         pane_lines.append('')
-        pane_lines.append('  EXP    [{0:14}]'.format(int(exp_ratio * 14) * '#'))
+        pane_lines.append('  EXP    [' + exp_fill + exp_spacer + ']  ')
         pane_lines.append('           {0} / {1}'.format(exp, nec_level))
+
         pane_lines.append('')
         pane_lines.append('')
         pane_lines.append('  (I)nventory')
@@ -388,10 +394,10 @@ class Weapon(object):
             if self.special == None:
                 return self.name
             else:
-                return green(self.name + ' ' + self.special)
+                return cyan(self.name + ' ' + self.special)
         else:
             if self.special == None:
-                return purple(self.multi + ' ' + self.name)
+                return green(self.multi + ' ' + self.name)
             else:
                 return purple(self.multi + ' ' + self.name + ' ' + self.special)
 
@@ -401,10 +407,6 @@ class Weapon(object):
 
         return name, self.get_descr()
             
-        # insert colouring function for specials?
-        
-        # run through post-process for weapon-specific specials    
-
         
         
 def random_weapon():
@@ -421,12 +423,12 @@ def random_weapon():
                 'of Love', 'made for Cooking',]      
 
     name = weapons[randint(0,len(weapons)-1)]
-    if randint(0,10) > 8:
+    if randint(0,10) > 5:
         multi = multis[randint(0,len(multis)-1)]
     else:
         multi = None
 
-    if randint(0,200) > 195:
+    if randint(0,200) > 100:
         special = str(specials[randint(0,len(specials)-1)])
     else:
         special = None

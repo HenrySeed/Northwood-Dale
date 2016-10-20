@@ -19,7 +19,7 @@ player = Player('Hrothgar')
 
 if player != None:
   
-    for i in range(1,5):
+    for i in range(1,10):
         weapon = random_weapon()
         (player.inventory).append(weapon)
 
