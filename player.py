@@ -510,35 +510,3 @@ def random_food():
     foods = ['Bananna', 'Apple']
     name = foods[randint(0,len(foods)-1)]
     return Food(name)
-
-
-def item_info(player, prompt):
-    prompt = prompt.lower()
-    prompt = prompt.split(' ')
-
-    if 'the' in prompt:
-        prompt.remove('the')
-
-    if 'my' in prompt:
-        prompt.remove('my')
-
-    if prompt[0] == 'tell':
-        item_name = prompt[3:]
-    else:
-        item_name = prompt[1:]
-    
-    item_name = ' '.join(item_name)
-
-    for i in player.inventory:
-        if item_name.lower() == i.name.lower():
-            name, descr = i.descr_printr()
-
-            if descr == None:
-                descr = ''
-
-            player.log.append(name)
-            player.log.append(descr)
-
-            # player.log.append('')
-            player.log.append('')
-            return 0

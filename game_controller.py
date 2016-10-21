@@ -67,7 +67,6 @@ def game_brain(player):
 
         prompt = input('\n   > ')
 
-
         if prompt == 'q' or prompt == 'quit':
             quit = True
             return -1
@@ -78,7 +77,7 @@ def game_brain(player):
 
         elif 'info' in prompt or 'tell me about' in prompt:
             item_info(player, prompt)
-
+            
         elif 'eat' in prompt:
             prompt = prompt.split()
             prompt.remove('eat')
