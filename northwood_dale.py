@@ -28,11 +28,9 @@ def precontroller(player):
 
         test_player(player)
 
-        my_map = Map(player)
-
         player.current_map.print_loc(player)
 
-        status = game_controller.game_brain(player, my_map)
+        status = game_controller.game_brain(player)
         clear()
 
         return status

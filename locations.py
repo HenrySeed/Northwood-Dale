@@ -1,4 +1,5 @@
 from utilities import *
+from game_controller import *
 
 class Location():
     def __init__(self, deets, items=""):
@@ -26,13 +27,16 @@ class Location():
         
         if direcs[direc] in self.available():
             player.current_map = direcs[direc]
+            player.log = ['']
             player.log.append("You walk along the path until you reach...")
             player.log.append('')
+
             player.current_map.print_loc(player)
 
         else:
             print(self)
-            print("There is an invisible wall blocking your way, damn devs.")
+            player.log.append("There is an invisible wall blocking your way, damn devs.")
+            player.log.append('')
             return self
 
 

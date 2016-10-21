@@ -31,7 +31,7 @@ def gui(player, my_map, log):
     print()
 
 
-def game_brain(player, my_map):
+def game_brain(player):
     commands = {
                 'info':         player.print_char_info,
                 'i':            player.print_inventory,
@@ -48,6 +48,9 @@ def game_brain(player, my_map):
     quit = False
 
     # player.print_inventory()
+
+
+    my_map =  Map(player)
 
     while quit == False:
 
