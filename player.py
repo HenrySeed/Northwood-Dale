@@ -15,6 +15,8 @@ class Player():
         self.level = level
         self.next_level = (self.level+1) * 1000
 
+        self.log = ['']
+
         self.health = 10
         self.max_health = 20
         self.strength = 10
@@ -28,12 +30,31 @@ class Player():
 
         self.inv_size = 20
 
-        self.log = ['']
-
         self.str = 10
         self.chr = 10
         self.dex = 10
 
+
+    def print(self, string, nl=1):
+        self.log.append(string)
+        if nl != 0:
+            self.log.append('')
+
+    def clear(self):
+        self.log = ['']
+        
+    def take(self, item):
+        if 'it' in item:
+            i = self.it
+            self.print("You pick up the " + i.name)
+            self.inventory.append(i)
+            self.current_map.items.remove(i)
+        else:
+            for i in self.current_map.items:
+                if item.lower() == i.name.lower():
+                    self.print("You pick up the " + i.name)
+                    self.inventory.append(i)
+                    self.current_map.items.remove(i)
 
 
     def eat(self, name):
@@ -76,10 +97,10 @@ class Player():
         max_width = self.inv_max_width()
         bar = '+' + ('-' * (max_width + 23)) + '+'
 
-        self.log.append(bar)
-        self.log.append('|  Inventory {0:{width}} {1:>7} gp   |'.format(amount_full, self.gp, width=max_width - 3))
+        self.print(bar, 0)
+        self.print('|  Inventory {0:{width}} {1:>7} gp   |'.format(amount_full, self.gp, width=max_width - 3), 0)
         
-        self.log.append(bar)
+        self.print(bar, 0)
         if num_weapons > 0:
             for i in self.inventory:
                 if i.type == 'weapon':
@@ -94,27 +115,27 @@ class Player():
                     else:
                         spacer = ''
 
-                    self.log.append(line + spacer)
+                    self.print(line + spacer, 0)
 
-            self.log.append(bar)
+            self.print(bar, 0)
 
         if num_armour > 0:
             for i in self.inventory:
                 if i.type == 'armour':
-                    self.log.append('|  {0:{width}}  DEF: {1:<2} |'.format(i.__str__(), i.defence, width=max_width + 11))
-            self.log.append(bar)
+                    self.print('|  {0:{width}}  DEF: {1:<2} |'.format(i.__str__(), i.defence, width=max_width + 11), 0)
+            self.print(bar, 0)
         
         if num_items > 0:
             for i in self.inventory:
                 if i.type == 'item' or i.type == 'food' :
-                    self.log.append('|  {0:{width}} |'.format(i.name, width=max_width + 20))
-            self.log.append(bar)
+                    self.print('|  {0:{width}} |'.format(i.name, width=max_width + 20), 0)
+            self.print(bar, 0)
 
         
         if num_armour == 0 and num_weapons == 0 and num_items == 0:
-            self.log.append('|  {0:{width}} |'.format('Your Inventory is empty', width=(max_width+21)))
+            self.print('|  {0:{width}} |'.format('Your Inventory is empty', width=(max_width+21)), 0)
            
-        self.log.append('')
+        self.print('', 0)
         
         
     def print_char_info(self):
@@ -259,7 +280,7 @@ class Food(object):
 
     def get_descr(self):
         descrs = {
-                'bananna':'A good source of potassium.',
+                'banana':'A good source of potassium.',
                 'apple':'One a day keeps doctor Nick away.'
         }
         if self.name.lower() in descrs.keys():
@@ -507,6 +528,6 @@ def random_item():
     return Item(name)
 
 def random_food():
-    foods = ['Bananna', 'Apple']
+    foods = ['banana', 'Apple']
     name = foods[randint(0,len(foods)-1)]
     return Food(name)

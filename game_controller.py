@@ -66,6 +66,7 @@ def game_brain(player):
             return -1
 
         prompt = input('\n   > ')
+        split_prompt = prompt.split()
 
         if prompt == 'q' or prompt == 'quit':
             quit = True
@@ -77,6 +78,27 @@ def game_brain(player):
 
         elif 'info' in prompt or 'tell me about' in prompt:
             item_info(player, prompt)
+
+        elif 'search' in prompt:
+            player.current_map.search(player)
+        
+        elif prompt in ['look', 'look around']:
+            player.current_map.look(player)
+
+        elif 'take' in split_prompt or ('pick' in split_prompt and 'up' in split_prompt):
+            try:
+                split_prompt.remove('take')
+            except:
+                None
+            try:
+                split_prompt.remove('pick')
+                split_prompt.remove('up')
+            except:
+                None
+            player.take(' '.join(split_prompt))
+
+        elif 'help' in split_prompt:
+            help(prompt, player)
             
         elif 'eat' in prompt:
             prompt = prompt.split()

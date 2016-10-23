@@ -1,5 +1,7 @@
 from utilities import *
 from game_controller import *
+import player
+
 
 class Location():
     def __init__(self, deets, items=""):
@@ -13,6 +15,8 @@ class Location():
         
         self.first = True
         self.items = []
+
+        self.it = None   # An abstract vartiable representing surrent focusses thing.
         
     def move(self, direc, player):
         
@@ -28,25 +32,23 @@ class Location():
         if direcs[direc] in self.available():
             player.current_map = direcs[direc]
             player.log = ['']
-            player.log.append("You walk along the path until you reach...")
-            player.log.append('')
+            player.print("You walk along the path until you reach...")
 
             player.current_map.print_loc(player)
 
         else:
             print(self)
-            player.log.append("There is an invisible wall blocking your way, damn devs.")
-            player.log.append('')
+            player.print("There is an invisible wall blocking your way, damn devs.")
             return self
 
 
     def search(self, player):
         if self.items == []:
-            player.log.append("    You found nothing.")
-            player.log.append('')
+            player.print("You found nothing.")
         else:
             for i in self.items:
-                player.log.append('You have found a ' + i.name)
+                player.print('You have found a ' + i.name)
+                player.it = i
             return self.items[0]
 
         
@@ -62,22 +64,20 @@ class Location():
     def set_descr(self, descr):
         self.descr = descr
         
-    def look(self):
-        print('\n' + self.descr)
+    def look(self, player):
+        for i in self.descr.split('\n'):
+            player.print(i, 0)
         
     def print_loc(self, player):
         
         if self.first == True:
             self.first = False
-            player.log.append('---- {} ----'.format(self.title))
-            player.log.append('')
+            player.print('---- {} ----'.format(self.title))
             
-            for i in self.descr.split('\n'):
-                string_to_log(i, player.log)
+            self.look(player)
 
         else:
-            player.log.append('---- {} ----'.format(self.title))
-            player.log.append('')
+            player.print('---- {} ----'.format(self.title))
         
 
 def locations_importer():
@@ -99,8 +99,7 @@ def locations_importer():
     tower = Location(locations[1])
     stables = Location(locations[2])
 
-    #l_chestplate = Item('Leather Chestplate', "Old and worn this chestplate has seen better days", "Armour", 0, 10)
-    #homestead.items.append(l_chestplate)
+    homestead.items.append(player.Armour('Leather Armour'))
     
     #---------------  Sets all the Connections Now ---------------------
     
